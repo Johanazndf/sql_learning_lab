@@ -17,6 +17,7 @@ INSERT INTO db.employees VALUES
 (8, 'Riya',  'FIN','2021-04-01', 4800);
 
 select * from db.employees;
+<<<<<<< HEAD
 
 -- Assign a row number to employees within each department ordered by salary descending
 select emp_id, emp_name,salary, dept, row_number() 
@@ -46,3 +47,5 @@ where salary > High_Prev_sal;
  sum(salary) over (partition by dept order by hire_date
  rows between unbounded preceding and current row)
  as dept_running_totalsal from db.employees;
+=======
+>>>>>>> b57ffd2dace2459d5cb7e31a95a85384a1847055
