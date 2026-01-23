@@ -178,5 +178,15 @@ lag(salary) over (partition by dept) as Previou_Sal,
 salary - lag(salary) over (partition by dept) as difference
 from employees;
 
+-- Show the highest-paid employee per department
+with ranked_employees as (
+select emp_id, dept, salary,
+row_number() over (partition by dept order by salary desc) as rn
+from employees
+)
+select emp_id, dept, salary
+from ranked_employees
+where rn = 1;
+
 
 
