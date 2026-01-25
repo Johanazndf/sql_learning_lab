@@ -196,3 +196,19 @@ from employees)
 select emp_id, dept, salary
 from top_sal
 where ts <= 3;
+
+-- find employees earning above their department average
+with avg_sal as (
+select dept,
+avg(salary) as avgsal
+from employees
+group by dept)
+select e.emp_id, e.dept, e.salary
+from employees e
+join avg_sal a
+on e.dept = a.dept
+where e.salary > a.avgsal;
+
+
+
+  
