@@ -209,6 +209,10 @@ join avg_sal a
 on e.dept = a.dept
 where e.salary > a.avgsal;
 
-
+-- join basic 
+select * 
+from employees e
+join (select avg(salary) sal from employees) as avg_sal
+on e.salary > avg_sal.sal;
 
   
