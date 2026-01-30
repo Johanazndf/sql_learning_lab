@@ -31,3 +31,14 @@ where (dept, salary) in (select dept, max(salary)
 from employees
 group by dept);
 
+-- to find the highest paid employee in each department
+with rank_emp as ( 
+select emp_id, dept, salary,
+row_number() over (partition by dept order by salary desc) as ranknum
+from employees)
+select emp_id, dept,salary
+from rank_emp
+where ranknum = 1;
+
+
+
